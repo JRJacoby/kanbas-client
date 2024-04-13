@@ -1,0 +1,41 @@
+.wd-kanbas-navigation {
+  background-color: black;
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+  width: 80px;
+  margin-right: 20px;
+}
+
+.wd-kanbas-navigation li {
+  padding: 10px;
+  font-size: 0.8em;
+  text-align: center;
+}
+
+.wd-kanbas-navigation li.wd-active {
+  background-color: white;
+}
+
+.wd-kanbas-navigation li.wd-active .jj-kanbas-nav-link {
+  color: red;
+}
+
+.wd-kanbas-navigation li.wd-active .jj-account-icon {
+  color: red;
+}
+
+.jj-kanbas-nav-link {
+  color: white;
+  text-decoration: none;
+}
+
+.jj-kanbas-nav-icon {
+  color: red;
+  font-size: 2em;
+  margin-bottom: 5px;
+}
+
+.jj-account-icon {
+  color: white;
+}

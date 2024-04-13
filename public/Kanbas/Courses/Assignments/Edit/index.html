@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <select>
+        <option>Speed Grader</option>
+        <option>Edit</option>
+        <option>Duplicate</option>
+        <option>Delete</option>
+        <option>Move To...</option>
+        <option>Send To...</option>
+        <option>Copy To...</option>
+        <option>Share to Commons</option>
+    </select>
+    <hr>
+    <h2>Assignment Name</h2>
+    <p><input type="text" value="A1 - ENV + HTML"></input></p>
+    <p><input type="text" value="This is the assignment description."></p>
+    <p><label for="pointsTextBox">Points</label>
+        <br>
+        <input id="pointsTextBox" type="text" value="100">
+    </p>
+    <p><label for="selectAssignmentGroup">Assignment Group</label>
+        <br>
+        <select id="selectAssignmentGroup">
+            <option>ASSIGNMENTS</option>
+            <option>QUIZZES</option>
+            <option>EXAMS</option>
+            <option>Project</option>
+        </select>
+    </p>
+    <p><label for="selectDisplayGrade">Display Grade as</label>
+        <br>
+        <select id="selectDisplayGrade">
+            <option>Percentage</option>
+            <option>Point Total</option>
+        </select>
+    </p>
+    <p><label for="selectSubmissionType">Submission Type</label>
+        <br>
+        <select id="selectSubmissionType">
+            <option>Online</option>
+            <option>On Paper</option>
+        </select>
+    </p>
+    <label for="divOnlineEntryOptions">Online Entry Options</label>
+    <div id="divOnlineEntryOptions">
+        <input type="checkbox" value="Text Entry">Text Entry</input>
+        <br>
+        <input type="checkbox" value="Website URL">Website URL</input>
+        <br>
+        <input type="checkbox" value="Media Recordings">Media Recordings</input>
+        <br>
+        <input type="checkbox" value="Media Recordings">Student Annotation</input>
+        <br>
+        <input type="checkbox" value="File Uploads">File Uploads</input>
+    </div>
+    <br>
+    <label for="assignDiv">Assign</label>
+    <br>
+    <div id="assignDiv">
+        <p><label for="assignToInput">Assign to</label>
+            <br>
+            <input id="assignToInput" type="text" value="Everyone">
+        </p>
+        <p><label for="dueDatePicker">Due</label>
+            <br>
+            <input id="dueDatePicker" type="date">
+        </p>
+        <p><label for="availableFromPicker">Available from</label>
+            <br>
+            <input id="availableFromPicker" type="date">
+        </p>
+        <p><label for="availableUntilPicker">Until</label>
+            <br>
+            <input id="availableUntilPicker" type="date">
+        </p>
+    </div>
+    <br>
+    <button>Cancel</button>
+    <button>Save</button>
+</body>
+
+</html>

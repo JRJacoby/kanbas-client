@@ -1,0 +1,26 @@
+.jj-assignments-breadcrumbs-bar {
+    margin-top: 20px;
+    display: flex;
+    vertical-align: middle;
+}
+
+.jj-assignments-breadcrumbs-bar > nav {
+    margin-left: 20px;
+}
+
+.jj-assignments-breadcrumbs-bar .jj-breadcrumb-link {
+    color: red;
+    text-decoration: none;
+}
+
+.jj-assignments-breadcrumbs-bar .breadcrumb {
+    margin-bottom: 0;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    content: " > ";
+}
+
+.jj-breadcrumbs-bar-icon {
+    color: red;
+}

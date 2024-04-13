@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0">
+    <link rel="stylesheet" href="/Kanbas/styles.css" />
+    <link rel="stylesheet" href="/Kanbas/Navigation/index.css" />
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/Kanbas/Courses/Navigation/index.css">
+    <link rel="stylesheet" href="/libs/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="/Kanbas/Courses/Assignments/index.css">
+    <link rel="stylesheet" href="/Kanbas/Courses/Assignments/Edit/index.css">
+    <script src="https://kit.fontawesome.com/4dd0faad47.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="jj-screen-container">
+        <div>
+            <ul class="wd-kanbas-navigation">
+                <li><a href="https://www.northeastern.edu"><img src="/images/neulogo.png"
+                            alt="The Northestern University Logo"></a></li>
+                <li><a href="/Kanbas/Account/Profile/screen.html"><i
+                            class="fa-solid fa-user jj-account-icon"></i>Account</a>
+                </li>
+                <li><a href="/Kanbas/Dashboard/screen.html"><i class="fa fa-tachometer"></i>Dashboard</a></li>
+                <li class="wd-active"><a href="/Kanbas/Courses/Home/screen.html"><i
+                            class="fa-solid fa-book"></i>Courses</a></li>
+                <li><a href="/Kanbas/Calendar/index.html"><i class="fa fa-calendar"></i>Calendar</a></li>
+                <li><a href="/Kanbas/Inbox/index.html"><i class="fa-solid fa-inbox"></i>Inbox</a></li>
+                <li><a href="/Kanbas/History/index.html"><i class="fa-regular fa-clock"></i>History</a></li>
+                <li><a href="/Kanbas/Studio/index.html"><i class="fa-solid fa-computer"></i>Studio</a></li>
+                <li><a href="/Kanbas/Commons/index.html"><i class="fa-solid fa-people-arrows"></i>Commons</a></li>
+                <li><a href="/Kanbas/Help/index.html"><i class="fa-solid fa-question"></i>Help</a></li>
+            </ul>
+        </div>
+        <div class="jj-assignments-course-nav-main-content-breadcrumbs">
+            <div class="jj-assignments-breadcrumbs-bar align-items-center">
+                <i class="fa-solid fa-bars fa-lg"></i>
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/Kanbas/Courses/Home/screen.html">CS5610.11744.202310</a>
+                        </li>
+                        <li class="breadcrumb-item"><a href="/Kanbas/Courses/Assignments/screen.html">Assignments</a>
+                        </li>
+                        <li class="breadcrumb-item active">A1 - ENVIRONMENT SETUP</li>
+                    </ol>
+                </nav>
+                <button class="float-end jj-grey-btn ms-auto"><i class="fa-solid fa-glasses"></i> Student View</button>
+            </div>
+            <hr>
+            <div class="jj-assignments-course-nav-main-content">
+                <div>
+                    <ul class="wd-navigation">
+                        <li><a href="/Kanbas/Courses/Home/screen.html">Home</a></li>
+                        <li><a href="/Kanbas/Modules/index.html">Modules</a></li>
+                        <li><a href="/Kanbas/Piazza/index.html">Piazza</a></li>
+                        <li><a href="/Kanbas/Zoommeetings/index.html">Zoom Meetings</a></li>
+                        <li class="wd-active"><a href="/Kanbas/Courses/Assignments/screen.html">Assignments</a></li>
+                        <li><a href="/Kanbas/Quizzes/index.html">Quizzes</a></li>
+                        <li><a href="/Kanbas/Courses/Grades/screen.html">Grades</a></li>
+                        <li><a href="/Kanbas/People/index.html">People</a></li>
+                        <li><a href="/Kanbas/Panoptovideo/index.html">Panopto Video</a></li>
+                        <li><a href="/Kanbas/Discussions/index.html">Discussions</a></li>
+                        <li><a href="/Kanbas/Announcements/index.html">Announcements</a></li>
+                        <li><a href="/Kanbas/Pages/index.html">Pages</a></li>
+                        <li><a href="/Kanbas/Files/index.html">Files</a></li>
+                        <li><a href="/Kanbas/Rubrics/index.html">Rubrics</a></li>
+                        <li><a href="/Kanbas/Outcomes/index.html">Outcomes</a></li>
+                        <li><a href="/Kanbas/Collaborations/index.html">Collaborations</a></li>
+                        <li><a href="/Kanbas/Syllabus/index.html">Syllabus</a></li>
+                        <li><a href="/Kanbas/Courses/Settings/CourseDetails/screen.html">Settings</a></li>
+                    </ul>
+                </div>
+                <div class="w-75 jj-assignments-edit-main-content">
+                    <div class="header d-flex align-content-center justify-content-end">
+                        <i class="fa fa-check-circle text-success"></i>
+                        <p>Published</p>
+                        <button class="jj-grey-btn"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                    </div>
+                    <form class="container">
+                        <div class="mb-3">
+                            <label for="assignment-name" class="form-label">Assignment Name</label>
+                            <input name="assignment-name" id="assignment-name" class=" mb-3 form-control"></input>
+                            <textarea name="assignment-name" id="assignment-description"
+                                class="form-control"></textarea>
+                        </div>
+                        <fieldset>
+                            <div class="mb-3 row">
+                                <label for="points" class="text-end col-sm-2 col-form-label">Points</label>
+                                <div class="col-sm-10"><input type="number" class="form-control" id="points"
+                                        name="points" min="0" step="1"></div>
+                            </div>
+
+                            <div class="mb-3 row">
+                                <label for="assignment-group" class="form-label col-sm-2 text-end">Assignment
+                                    Group</label>
+                                <div class="col-sm-10">
+                                    <select name="assignment-group" id="assignment-group" class="form-select">
+                                        <option value="ASSIGNMENTS">ASSIGNMENTS</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="mb-3 row">
+                                <label for="display-grade-as"
+                                    class=" text-end col-sm-2 col-form-label form-label">Display Grade as</label>
+                                <div class="col-sm-10">
+                                    <select name="display-grade-as" id="display-grade-as" class="form-select">
+                                        <option value="Percentage">Percentage</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="mb-3 row jj-checkbox-container">
+                                <!--Dummy label to mtach spacing of other form elements-->
+                                <label for="checkbox-container"
+                                    class="text-end col-sm-2 col-form-label form-label"></label>
+                                <div class="col-sm-10 form-check" id="checkbox-container">
+                                    <label for="final-grade-checkbox" class="form-label">Do not count this assignment
+                                        towards
+                                        the final grade</label>
+                                    <input type="checkbox" class="form-check-input" id="final-grade-checkbox"
+                                        name="final-grade-checkbox">
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <div class="row">
+                            <label for="assign-section" class="form-label col-form-label col-sm-2 text-end">Assign</label>
+                            <div class="col-sm-10">
+                                <fieldset class="border p-3 mb-3" id="assign-section">
+                                    <div class="mb-3">
+                                        <label for="assign-to" class="form-label"><b>Assign to</b></label>
+                                        <select multiple class="form-select" name="assign-to" id="assign-to">
+                                            <option value="Everyone">Everyone</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="due" class="form-label"><b>Due</b></label>
+                                        <input type="datetime-local" class="form-control" id="due" name="due">
+                                    </div>
+                                    <div class="mb-3 jj-from-to d-flex">
+                                        <div>
+                                            <label for="available-from" class="form-label"><b>Available from</b></label>
+                                            <input type="datetime-local" class="form-control" id="available-from"
+                                                name="available-from">
+                                        </div>
+                                        <div>
+                                            <label for="available-to" class="form-label"><b>Available to</b></label>
+                                            <input type="datetime-local" class="form-control" id="available-to"
+                                                name="available-from">
+                                        </div>
+                                        <div></div>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <i class="fa-solid fa-plus"></i> Add
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <div class="mb-3 form-check">
+                                <label for="notify-checkbox" class="form-label">Notify users that this content has
+                                    changed</label>
+                                <input type="checkbox" class="form-check-input" id="notify-checkbox"
+                                    name="final-grade-checkbox">
+                            </div>
+                            <div>
+                                <button class="jj-grey-btn">Cancel</button>
+                                <button type="submit" class="jj-red-btn">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

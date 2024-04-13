@@ -1,0 +1,157 @@
+.wd-modules,
+.wd-modules * {
+    border-radius: 0%;
+    border: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.wd-modules {
+    margin: 5px;
+}
+
+.wd-modules>li {
+    background-color: rgb(245, 245, 245);
+    border: 1px solid lightgray !important;
+    border-left: none !important;
+}
+
+.wd-modules>li>div {
+    padding-left: 6px;
+    padding-right: 6px;
+    border-left: 1px solid lightgray !important;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.wd-modules>li>ul>li {
+    border-top: 1px solid lightgray !important;
+    border-left: 1px solid green;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    padding-left: 10px;
+}
+
+.wd-modules>li {
+    margin-bottom: 20px;
+}
+
+.jj-list-item {
+    padding-left: 30px;
+    /*text-indent: 30px;*/
+}
+
+.jj-home-main-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.jj-home-header-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.jj-wide-grey-btn {
+    margin: 2px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    color: rgb(73, 73, 73);
+    background-color: rgb(245, 245, 245);
+    width: 100%;
+    text-align: left;
+}
+
+.jj-green-btn {
+    margin: 2px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: none;
+    border-radius: 3px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(29, 133, 47);
+}
+
+.jj-publish-options {
+    display: flex;
+    flex-direction: row;
+}
+
+.jj-publish-options > button {
+    flex: 1;
+}
+
+.jj-coming-up-list-item {
+    display: flex;
+    flex-direction: row;
+}
+
+.jj-coming-up-list-item p {
+    color: darkgray;
+    font-size: 12px;
+    line-height: 1;
+}
+
+.jj-coming-up-list-item i {
+    padding-right: 10px;
+}
+
+.jj-courses-home-sidebar {
+    margin-left: 45px;
+    margin-top: 5px;
+}
+
+.jj-courses-home-sidebar > ul {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.jj-responsive-menu-bar > * {
+    color: white;
+}
+
+.jj-responsive-menu-bar i {
+    padding: 5px;
+}
+
+.jj-responsive-menu-bar a {
+    color: white;
+}
+
+.jj-list-plus {
+    padding-left: 5px;
+    margin-right: 15px;
+}
+
+.jj-list-item-inner {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.jj-list-grip {
+    margin-right: 5px;
+}
+
+.jj-check-dropdown {
+    margin-right: 20px;
+}
+
+.jj-delete-module-btn {
+    background-color: crimson;
+    margin-right: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: none;
+    border-radius: 3px;
+}
+
+.jj-edit-module-btn {
+    margin-right: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+}

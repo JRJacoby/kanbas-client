@@ -1,0 +1,126 @@
+.wd-modules,
+.wd-modules * {
+    border-radius: 0%;
+    border: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.wd-modules {
+    margin: 5px;
+}
+
+.wd-modules>li {
+    background-color: lightgray;
+    border: 1px solid gray !important;
+    border-left: none !important;
+}
+
+.wd-modules>li>div {
+    padding: 6px;
+    border-left: 1px solid gray !important;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.wd-modules>li>ul>li {
+    padding: 5px;
+    border-top: 1px solid gray !important;
+    border-left: 2px solid green;
+}
+
+.wd-modules>li {
+    margin-bottom: 20px;
+}
+
+.jj-list-item {
+    padding-left: 30px;
+    /*text-indent: 30px;*/
+}
+
+.jj-home-main-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.jj-home-header-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.jj-wide-grey-btn {
+    width: 50%;
+    margin: 2px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: none;
+    border-radius: 3px;
+    color: rgb(73, 73, 73);
+    background-color: lightgray;
+    width: 100%;
+    text-align: left;
+}
+
+.jj-green-btn {
+    width: 50%;
+    margin: 2px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: none;
+    border-radius: 3px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(29, 133, 47);
+}
+
+.jj-publish-options {
+    display: flex;
+    flex-direction: row;
+}
+
+.jj-publish-options > button {
+    flex: 1;
+}
+
+.jj-coming-up-list-item {
+    display: flex;
+    flex-direction: row;
+}
+
+.jj-coming-up-list-item p {
+    color: darkgray;
+    font-size: 12px;
+    line-height: 1;
+}
+
+.jj-coming-up-list-item i {
+    padding-right: 10px;
+}
+
+.jj-courses-home-sidebar {
+    width: 250px;
+    margin-left: 15px;
+    margin-top: 30px;
+}
+
+.jj-courses-home-sidebar > ul {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.jj-responsive-menu-bar > * {
+    color: white;
+}
+
+.jj-responsive-menu-bar i {
+    padding: 5px;
+}
+
+.jj-responsive-menu-bar a {
+    color: white;
+}
+
+.jj-list-plus {
+    padding-left: 5px;
+}

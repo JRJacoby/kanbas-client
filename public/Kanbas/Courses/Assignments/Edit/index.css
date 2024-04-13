@@ -1,0 +1,27 @@
+.jj-assignments-edit-main-content > .header > p {
+    color: green;
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.jj-assignments-edit-main-content > .header > i {
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+}
+
+.jj-assignments-edit-main-content > .header > button > i {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.jj-assignment-div {
+    border-width: 2px;
+}
+
+.jj-checkbox-container {
+    margin-left: 5px !important;
+}
