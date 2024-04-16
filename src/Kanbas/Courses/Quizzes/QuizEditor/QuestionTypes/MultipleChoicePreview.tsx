@@ -3,9 +3,6 @@ import {useQuiz} from '../QuizContext';
 function MultipleChoicePreview({ questionId}) {
 	const {quiz} = useQuiz();
 	const question = quiz.questions.find((question) => question._id === questionId)
-	console.log(`question in MCP: ${JSON.stringify(question)}`)
-	console.log(`questionId in MCP: ${questionId}`)
-	console.log(`quiz in MCP: ${JSON.stringify(quiz)}`)
 
 	return (
 		<div>

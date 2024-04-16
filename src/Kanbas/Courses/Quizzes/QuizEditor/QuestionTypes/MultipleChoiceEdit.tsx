@@ -8,9 +8,6 @@ function MultipleChoiceEdit({ questionId }) {
 	const question = quiz.questions.find((question) => question._id === questionId)
 	const [currentQuestion, setCurrentQuestion] = useState({...question});
 	const [questionTypes, setQuestionTypes] = useState([])
-	console.log(`question in MCP: ${JSON.stringify(question)}`)
-	console.log(`questionId in MCP: ${questionId}`)
-	console.log(`quiz in MCP: ${JSON.stringify(quiz)}`)
 
 	const fetchQuestionTypes = async () => {
 		const questionTypes = await client.getQuestionTypes()
@@ -48,8 +45,8 @@ function MultipleChoiceEdit({ questionId }) {
 					<div>
 					<input value={currentQuestion.title} onChange={(e) => changeQuestionType(e.target.value)}/>
 					<select value={currentQuestion.questionType} onChange={(e) => setCurrentQuestion({...currentQuestion, questionType: e.target.value})}>
-						{questionTypes.map((questionType) => (
-							<option value={questionType}>{typeMap[questionType]}</option>
+						{questionTypes.map((questionType, index) => (
+							<option key={index} value={questionType}>{typeMap[questionType]}</option>
 						))}
 					</select>
 					</div>

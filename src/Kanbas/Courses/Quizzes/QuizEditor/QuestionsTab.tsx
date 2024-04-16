@@ -17,7 +17,6 @@ function QuestionsTab() {
 	
 	const newQuestion = async () => {
 		const newQuiz = await client.addQuestion(quiz._id, defaultQuestion)
-		console.log(`newQuiz: ${JSON.stringify(newQuiz)}`)
 		setQuiz(newQuiz)
 	}
 
