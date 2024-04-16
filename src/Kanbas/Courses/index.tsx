@@ -9,6 +9,7 @@ import Home from "./Home";
 import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/Editor";
 import Grades from "./Grades";
+import Quizzes from "./Quizzes";
 
 const API_BASE = process.env.REACT_APP_API_BASE_ASIX
 
@@ -43,7 +44,7 @@ function Courses() {
                             <Route path="/Zoommeetings" element={<h1>Zoom Meetings</h1>} />
                             <Route path="/Assignments" element={<Assignments />} />
                             <Route path="/Assignments/:assignmentId" element={<AssignmentEditor />} />
-                            <Route path="/Quizzes" element={<h1>Quizzes</h1>} />
+                            <Route path="/Quizzes/*" element={<Quizzes />} />
                             <Route path="/Grades" element={<Grades />} />
                             <Route path="/People" element={<h1>People</h1>} />
                             <Route path="/Panoptovideo" element={<h1>Panopto Video</h1>} />
