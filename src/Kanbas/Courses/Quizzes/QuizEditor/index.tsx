@@ -17,6 +17,8 @@ function QuizEditor() {
 	}
 
 	const save = async () => {
+		console.log(`Saving quiz: ${JSON.stringify(quiz)}`)
+
 		await client.updateQuiz(quiz)
 		navigate(`/Kanbas/Courses/${courseId}/Quizzes`)
 	}

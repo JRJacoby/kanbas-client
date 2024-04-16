@@ -16,8 +16,7 @@ function QuestionsTab() {
 	const {quiz, setQuiz} = useQuiz();
 	
 	const newQuestion = async () => {
-		const newQuiz = await client.addQuestion(quiz._id, defaultQuestion)
-		setQuiz(newQuiz)
+		setQuiz({...quiz, questions: [...quiz.questions, defaultQuestion]})
 	}
 
   return (
