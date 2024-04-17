@@ -29,3 +29,7 @@
 	border: 1px solid lightgray;
 	background-color: #f9f9f9;
 }
+
+.jj-right-justified-list {
+	text-align: right;
+}

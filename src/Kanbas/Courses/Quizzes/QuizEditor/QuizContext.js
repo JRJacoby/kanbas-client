@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext, useEffect } from 'react';
 import * as client from '../client';
 
 const QuizContext = createContext();
@@ -34,10 +34,12 @@ export const QuizProvider = ({ children }) => {
 	}
 
 	const setQuizDetails = (newQuiz) => {
+		console.log(`in setQuizDetails during saveAndPublih, newQuiz: ${JSON.stringify(newQuiz)}`)
 		let {questions, ...details} = newQuiz;
+		console.log(`in setQuizDetails during saveAndPublih, details: ${JSON.stringify(details)}`)
 		setQuiz({...details, questions: quiz.questions});
 	}
-
+	
 	const addQuestion = () => {
 		let newQuestionNum;
 		if (quiz.questions.length === 0) {
@@ -47,7 +49,6 @@ export const QuizProvider = ({ children }) => {
 		}
 
 		const newQuestion = {...defaultMCQuestion, questionNum: newQuestionNum, mode: 'Edit'};
-		console.log(`newQuestion: ${JSON.stringify(newQuestion)}`)
 		setNewQuestions([...newQuestions, newQuestion]);
 		setQuiz({...quiz, questions: [...quiz.questions, newQuestion]});
 	}
@@ -84,32 +85,31 @@ export const QuizProvider = ({ children }) => {
 		updateQuestion(question);
 	}
 
-	const save = async () => {
+	const save = async (publish = false) => {
 		let questionIds = [];
+		let localQuiz = {...quiz};
 
-		console.log(`in save()`)
-		console.log(`quizQuestions: ${JSON.stringify(quiz.questions)}`)
-		for (const question of quiz.questions) {
+		if (publish) {
+			localQuiz.published = true;
+		}
+
+		for (const question of localQuiz.questions) {
 			if (question._id) {
-				console.log(`updating question: ${JSON.stringify(question)}`)
-				await client.updateQuestion(quiz._id, question._id, question);
+				await client.updateQuestion(localQuiz._id, question._id, question);
 				questionIds.push(question._id);
 			}
 		}
 
 		for (const question of newQuestions) {
-			console.log(`adding question: ${JSON.stringify(question)}`)
-			const newQuiz = await client.addQuestion(quiz._id, question);
+			const newQuiz = await client.addQuestion(localQuiz._id, question);
 			const questionNum = question.questionNum;
 			const newQuestion = newQuiz.questions.find(q => q.questionNum === questionNum);
-			console.log(`newQuestion: ${JSON.stringify(newQuestion)}`)
 
 			questionIds.push(newQuestion._id);
 		}
 		setNewQuestions([]);
 
-		await client.updateQuiz({...quiz, questions: questionIds});
-
+		await client.updateQuiz({...localQuiz, questions: questionIds});
 	}
 
 	const cancel = () => {

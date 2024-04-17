@@ -11,6 +11,7 @@ function QuizEditor() {
 	const [activeTab, setActiveTab] = useState("Details")
 	const { courseId, quizId } = useParams()
 	const {quiz, setQuiz, save, cancel, setQuizDetails} = useQuiz()
+	const [shouldSaveAndPublish, setShouldSaveAndPublish] = useState(false)
 
 	const goToQuizList = async () => {
 		cancel()
@@ -24,15 +25,12 @@ function QuizEditor() {
 
 	const saveAndPublish = async () => {
 		console.log(`save and publish clicked. quiz: ${JSON.stringify(quiz)}`)
-		setQuizDetails({...quiz, published: true})
-		await save()
+		await save(true)
 		navigate(`/Kanbas/Courses/${courseId}/Quizzes`)
 	}
 
 	const fetchQuiz = async () => {
-		console.log(`fetchQuiz called with quizId: ${quizId}`)
 		const fetchedQuiz = await client.findQuizById(quizId)
-		console.log(`fetchedQuiz: ${JSON.stringify(fetchedQuiz)}`)
 
 		fetchedQuiz.questions.forEach((question) => {
 			question.mode = 'Preview'
@@ -50,16 +48,20 @@ function QuizEditor() {
 			{quiz &&
 			<div>
 				<div className="d-flex justify-content-end">
-					<h3>Points {quiz.points}</h3>
-					{quiz.published ? <h3>Published</h3> : <h3>Not Published</h3>}
+					<h5 className="me-3">Points {quiz.points}</h5>
+					{quiz.published ? <h5>Published</h5> : <h5>Not Published</h5>}
 				</div>
 				
 				<hr />
 
-				<div>
-					<button onClick={() => setActiveTab("Details")}>Details</button>
-					<button onClick={() => setActiveTab("Questions")}>Questions</button>
-				</div>
+				<ul className="nav nav-tabs mb-3" role="tablist">
+					<li className="nav-item" role="presentation">
+						<button className={`nav-link ${activeTab === 'Details' ? 'active' : 'text-danger'}`} onClick={() => setActiveTab("Details")}>Details</button>
+					</li>
+					<li className="nav-item" role="presentation">
+						<button className={`nav-link ${activeTab === 'Details' ? 'text-danger' : 'active'}`} onClick={() => setActiveTab("Question")}>Questions</button>
+					</li>
+				</ul>
 
 				{activeTab === "Details" ? <DetailsTab /> : <QuestionsTab />}
 

@@ -1,6 +1,7 @@
 import {useParams, useNavigate} from "react-router"
 import {useState, useEffect} from "react"
 import "../../../../index.css"
+import "../index.css"
 import * as client from "../client"
 import {useQuiz} from "../QuizEditor/QuizContext"
 
@@ -90,11 +91,11 @@ function QuizDetails() {
 			</div>
 
 			<div className="d-flex justify-content-start">
-				<div className="d-flex justify-content-end">
-					<ul className="text-right">
+				<div>
+					<ul className="jj-right-justified-list">
 						{propertiesToDisplay.map((property) => {
 							return (
-								<li key={property}><b>{property}</b></li>
+								<li key={property}><b >{property}</b></li>
 							)
 						})}
 					</ul>
