@@ -2,12 +2,12 @@ import {useParams, useNavigate} from "react-router"
 import {useState, useEffect} from "react"
 import "../../../../index.css"
 import * as client from "../client"
-import defaultQuiz from "../index"
+import {useQuiz} from "../QuizEditor/QuizContext"
 
 function QuizDetails() {
 	const { quizId, courseId } = useParams()
 	const navigate = useNavigate()
-	const [quiz, setQuiz] = useState<any>(defaultQuiz)
+	const {quiz, setQuiz} = useQuiz()
 	const [valuesToDisplay, setValuesToDisplay] = useState<any>([])
 	
 	const propertiesToDisplay = [
@@ -72,6 +72,8 @@ function QuizDetails() {
 
 	return (
 		<div>
+		{quiz &&
+		<div>
 			<div className="d-flex justify-content-end">
 				{quiz.published ? 
 					<button className="btn btn-success" onClick={togglePublish}>Published</button> :
@@ -127,6 +129,8 @@ function QuizDetails() {
 					</tbody>
 				</table>
 			</div>
+			</div>
+		}
 		</div>
 	)
 }
