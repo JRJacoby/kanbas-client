@@ -25,8 +25,8 @@ function QuizPreview() {
 
 	return (
 		<div>
-			{quiz && quiz.questions.length > 0 &&
-			<div>
+			{quiz && quiz.questions.length > 0 ?
+			(<div>
 				<div>
 					<h2>{quiz.title}</h2>
 				</div>
@@ -62,7 +62,7 @@ function QuizPreview() {
 				<div className="d-flex justify-content-end">
 					<button className="btn btn-secondary">Submit Quiz</button>
 				</div>
-			</div>
+			</div>) : 'Add questions to see quiz preview here!'
 			}
 		</div>
 	)
