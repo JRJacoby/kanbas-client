@@ -20,6 +20,7 @@ function QuizDetails() {
 	  "Multiple Attempts",
 	  "View Responses",
 	  "Show Correct Answers",
+	  "Access Code",
 	  "One Question at a Time",
 	  "Require Respondus LockDown Browser",
 	  "Required to View Quiz Results",
@@ -48,6 +49,11 @@ function QuizDetails() {
 
 	const fetchQuiz = async () => {
 		const fetchedQuiz = await client.findQuizById(quizId)
+
+		if (fetchedQuiz.accessCode === undefined) {
+			fetchedQuiz.accessCode = "\u00A0"
+		}
+
 		setValuesToDisplay([
 		  fetchedQuiz.quizType,
 		  fetchedQuiz.points,
@@ -57,6 +63,7 @@ function QuizDetails() {
 		  fetchedQuiz.multipleAttempts,
 		  fetchedQuiz.viewResponses,
 		  fetchedQuiz.showCorrectAnswers,
+		  fetchedQuiz.accessCode,
 		  fetchedQuiz.oneQuestionAtATime,
 		  fetchedQuiz.lockdownBrowserRequired,
 		  fetchedQuiz.requiredToViewResults,
@@ -102,6 +109,7 @@ function QuizDetails() {
 				</div>
 
 				<div className="d-flex justify-content-start">
+					{/*JSON.stringify(valuesToDisplay)*/}
 					<ul className="text-left">
 						{valuesToDisplay.map((value, index) => {
 							return (
