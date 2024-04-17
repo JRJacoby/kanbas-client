@@ -1,8 +1,8 @@
 import {useQuiz} from '../QuizContext';
 
-function TrueFalsePreview({ questionId }) {
+function TrueFalsePreview({ questionNum }) {
 	const {quiz} = useQuiz();
-	const question = quiz.questions.find((question) => question._id === questionId)
+	const question = quiz.questions.find((question) => question.questionNum === questionNum)
 
 	return (
 		<div>
@@ -11,9 +11,9 @@ function TrueFalsePreview({ questionId }) {
 			</div>
 
 			<hr />
-			<input type="radio" value="true" /> True
+			<input name="ansewr" type="radio" value="true" /> True
 			<hr />
-			<input type="radio" value="false" /> False
+			<input name="ansewr" type="radio" value="false" /> False
 		</div>
 	)
 }

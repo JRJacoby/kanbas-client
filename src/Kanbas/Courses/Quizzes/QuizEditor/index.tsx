@@ -10,26 +10,34 @@ function QuizEditor() {
 	const navigate = useNavigate()
 	const [activeTab, setActiveTab] = useState("Details")
 	const { courseId, quizId } = useParams()
-	const {quiz, setQuiz} = useQuiz()
+	const {quiz, setQuiz, save, cancel, setQuizDetails} = useQuiz()
 
-	const goToQuizList = () => {
+	const goToQuizList = async () => {
+		cancel()
 		navigate(`/Kanbas/Courses/${courseId}/Quizzes`)
 	}
 
-	const save = async () => {
-		console.log(`Saving quiz: ${JSON.stringify(quiz)}`)
-
-		await client.updateQuiz(quiz)
+	const saveButton = async () => {
+		await save()
 		navigate(`/Kanbas/Courses/${courseId}/Quizzes`)
 	}
 
 	const saveAndPublish = async () => {
-		await client.updateQuiz({...quiz, published: true})
+		console.log(`save and publish clicked. quiz: ${JSON.stringify(quiz)}`)
+		setQuizDetails({...quiz, published: true})
+		await save()
 		navigate(`/Kanbas/Courses/${courseId}/Quizzes`)
 	}
 
 	const fetchQuiz = async () => {
+		console.log(`fetchQuiz called with quizId: ${quizId}`)
 		const fetchedQuiz = await client.findQuizById(quizId)
+		console.log(`fetchedQuiz: ${JSON.stringify(fetchedQuiz)}`)
+
+		fetchedQuiz.questions.forEach((question) => {
+			question.mode = 'Preview'
+		})
+
 		setQuiz(fetchedQuiz)
 	}
 
@@ -59,7 +67,7 @@ function QuizEditor() {
 				<div className="d-flex justify-content-end">
 					<button type="button" className="btn btn-secondary" onClick={goToQuizList}>Cancel</button>
 					<button type="button" className="btn btn-secondary" onClick={saveAndPublish}>Save & Publish</button>
-					<button type="button" className="btn btn-danger" onClick={save}>Save</button>
+					<button type="button" className="btn btn-danger" onClick={saveButton}>Save</button>
 				</div>
 				<hr />
 			</div>

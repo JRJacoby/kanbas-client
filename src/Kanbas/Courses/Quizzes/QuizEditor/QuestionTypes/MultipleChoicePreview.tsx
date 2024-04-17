@@ -1,8 +1,8 @@
 import {useQuiz} from '../QuizContext';
 
-function MultipleChoicePreview({ questionId}) {
+function MultipleChoicePreview({ questionNum}) {
 	const {quiz} = useQuiz();
-	const question = quiz.questions.find((question) => question._id === questionId)
+	const question = quiz.questions.find((question) => question.questionNum === questionNum)
 
 	return (
 		<div>

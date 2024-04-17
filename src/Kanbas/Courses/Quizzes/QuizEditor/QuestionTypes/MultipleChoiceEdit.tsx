@@ -3,9 +3,9 @@ import "../../../../../index.css"
 import {useState, useEffect} from 'react';
 import * as client from "../../client"
 
-function MultipleChoiceEdit({ questionId }) {
-	const {quiz, updateQuestion, setQuestionMode, setQuestionType} = useQuiz();
-	const question = quiz.questions.find((question) => question._id === questionId)
+function MultipleChoiceEdit({ questionNum }) {
+	const {quiz, updateQuestion, setQuestionType} = useQuiz();
+	const question = quiz.questions.find((question) => question.questionNum === questionNum)
 	const [currentQuestion, setCurrentQuestion] = useState({...question});
 	const [questionTypes, setQuestionTypes] = useState([])
 
@@ -19,16 +19,15 @@ function MultipleChoiceEdit({ questionId }) {
 	}, [])
 
 	const changeQuestionType = async (questionType) => {
-		setQuestionType(questionId, questionType)
+		setQuestionType(question, questionType)
 	}
 
 	const cancelEdit = () => {
-		setQuestionMode(questionId, 'Preview')
+		updateQuestion({...question, mode: 'Preview'})
 	}
 
 	const saveEdit = async () => {
-		await client.updateQuestion(quiz._id, questionId, currentQuestion)
-		updateQuestion({currentQuestion, mode: 'Preview'})
+		updateQuestion({...currentQuestion, mode: 'Preview'})
 	}
 
 	const typeMap = {
@@ -41,20 +40,20 @@ function MultipleChoiceEdit({ questionId }) {
 		<div>
 			{currentQuestion &&
 			<div>
-				<div className="d-flex justify-content-between">
-					<div>
-					<input value={currentQuestion.title} onChange={(e) => changeQuestionType(e.target.value)}/>
-					<select value={currentQuestion.questionType} onChange={(e) => setCurrentQuestion({...currentQuestion, questionType: e.target.value})}>
-						{questionTypes.map((questionType, index) => (
-							<option key={index} value={questionType}>{typeMap[questionType]}</option>
-						))}
-					</select>
-					</div>
-					pts: <input type="number" min="0" value={currentQuestion.points} onChange={(e) => setCurrentQuestion({...currentQuestion, points: e.target.value})}/>
+			<div className="d-flex justify-content-between">
+				<div>
+				<input value={currentQuestion.title} onChange={(e) => setCurrentQuestion({...currentQuestion, title: e.target.value})}/>
+				<select value={currentQuestion.questionType} onChange={(e) => changeQuestionType(e.target.value)}>
+					{questionTypes.map((questionType, index) => (
+						<option key={index} value={questionType}>{typeMap[questionType]}</option>
+					))}
+				</select>
 				</div>
+				pts: <input type="number" min="0" value={currentQuestion.points} onChange={(e) => setCurrentQuestion({...currentQuestion, points: e.target.value})}/>
+			</div>
 
 				<div>
-					<textarea value={currentQuestion.questionText} onChange={(e) => setCurrentQuestion({...currentQuestion, description: e.target.value})}/>
+					<textarea value={currentQuestion.questionText} onChange={(e) => setCurrentQuestion({...currentQuestion, questionText: e.target.value})}/>
 				</div>
 
 				<div>

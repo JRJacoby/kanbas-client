@@ -1,8 +1,8 @@
 import {useQuiz} from '../QuizContext';
 
-function FillInTheBlankPreview({ questionId }) {
+function FillInTheBlanksPreview({ questionNum }) {
 	const {quiz} = useQuiz();
-	const question = quiz.questions.find((question) => question._id === questionId)
+	const question = quiz.questions.find((question) => question.questionNum === questionNum)
 
 	return (
 		<div>
@@ -10,9 +10,9 @@ function FillInTheBlankPreview({ questionId }) {
 				<p>{question.questionText}</p>
 			</div>
 			<hr />
-			{question.blanks.map((blank, index) => (
+			{question.answers.map((answer, index) => (
 				<div key={index}>
-					<input type="text" placeholder={blank} />
+					<input type="text" />
 					<hr />
 				</div>
 			))}
@@ -20,4 +20,4 @@ function FillInTheBlankPreview({ questionId }) {
 	)
 }
 
-export default FillInTheBlankPreview;
+export default FillInTheBlanksPreview;

@@ -1,10 +1,9 @@
 import {useQuiz} from './QuizContext';
-import {useEffect} from 'react';
 import {TrueFalsePreview, TrueFalseEdit, MultipleChoicePreview, MultipleChoiceEdit, FillInTheBlanksPreview, FillInTheBlanksEdit} from './QuestionTypes';
 
-function Question({ questionId }) {
-	const {quiz, setQuestionMode} = useQuiz();
-	const question = quiz.questions.find((question) => question._id === questionId)
+function Question({ questionNum, forcePreview = false }) {
+	const {quiz} = useQuiz();
+	const question = quiz.questions.find((question) => question.questionNum === questionNum)
 
 	const typeMap = {
 		'trueFalse': {
@@ -21,9 +20,9 @@ function Question({ questionId }) {
 		}
 	}
 
-	useEffect(() => {
-		setQuestionMode(questionId, 'Preview')
-	}, [])
+	if (forcePreview) {
+		question.mode = 'Preview'
+	}
 
 	const QuestionComponent = question && (
 		question.mode == 'Preview' ? typeMap[question.questionType]['preview'] : typeMap[question.questionType]['edit']
@@ -31,7 +30,7 @@ function Question({ questionId }) {
 
 	return (
 		<div>
-			{QuestionComponent && <QuestionComponent questionId={questionId} />}
+			{QuestionComponent && <QuestionComponent questionNum={questionNum} />}
 		</div>
 	)
 }

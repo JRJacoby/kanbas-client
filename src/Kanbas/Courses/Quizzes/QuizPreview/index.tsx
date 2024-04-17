@@ -6,7 +6,7 @@ import "../../../../index.css"
 import Question from '../QuizEditor/Question'
 
 function QuizPreview() {
-	const [quiz, setQuiz] = useQuiz();
+	const [quiz, setQuiz] = useState(null);
 	const [questionNum, setQuestionNum] = useState(1);
 	const { quizId } = useParams();
 	const started = Date.now()
@@ -22,7 +22,7 @@ function QuizPreview() {
 
 	return (
 		<div>
-			{quiz &&
+			{quiz && quiz.questions.length > 0 &&
 			<div>
 				<div>
 					<h2>{quiz.title}</h2>
@@ -46,16 +46,16 @@ function QuizPreview() {
 					</div>
 
 					<div>
-						<Question questionId={quiz.questions[questionNum - 1]._id} />
+						<Question questionNum={quiz.questions[questionNum - 1].questionNum} forcePreview={true} />
 					</div>
 				</div>
 
 				<div className="d-flex justify-content-between">
-					{questionNum > 1 && <button className="btn btn-secondary" onClick={() => setQuestionNum(questionNum - 1)}>Previous</button>}
-					{questionNum < quiz.questions.length && <button className="btn btn-secondary" onClick={() => setQuestionNum(questionNum + 1)}>Next</button>}
+					<div>{questionNum > 1 && <button className="btn btn-secondary" onClick={() => setQuestionNum(questionNum - 1)}>Previous</button>}</div>
+					<div>{questionNum < quiz.questions.length && <button className="btn btn-secondary" onClick={() => setQuestionNum(questionNum + 1)}>Next</button>}</div>
 				</div>
 
-				<div className="d-flex justify-conent-end">
+				<div className="d-flex justify-content-end">
 					<button className="btn btn-secondary">Submit Quiz</button>
 				</div>
 			</div>
