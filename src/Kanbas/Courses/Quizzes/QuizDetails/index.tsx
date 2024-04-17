@@ -29,17 +29,17 @@ function QuizDetails() {
 	];
 
 	const togglePublish = async () => {
-		let newQuiz
 		if (quiz.published) {
-			newQuiz = await client.updateQuiz({...quiz, published: false})
+			await client.updateQuiz({...quiz, published: false})
 		} else {
-			newQuiz = await client.updateQuiz({...quiz, published: true})
+			await client.updateQuiz({...quiz, published: true})
 		}
 
-		setQuiz(newQuiz)
+		setQuiz({...quiz, published: !quiz.published})
 	}
 
 	const goToPreview = () => {
+		console.log(`going to preview with quizId: ${quizId}`)
 		navigate(`/Kanbas/Courses/${courseId}/Quizzes/${quizId}/Preview`)
 	}
 
@@ -110,7 +110,7 @@ function QuizDetails() {
 
 				<div className="d-flex justify-content-start">
 					{/*JSON.stringify(valuesToDisplay)*/}
-					<ul className="text-left">
+					<ul className="text-left jj-detail-value-list">
 						{valuesToDisplay.map((value, index) => {
 							return (
 								<li key={index}>{value.toString()}</li>

@@ -32,6 +32,11 @@
 
 .jj-right-justified-list {
 	text-align: right;
+	min-width: 340px;
+}
+
+.jj-detail-value-list {
+	min-width: 200px;
 }
 
 .jj-popup-menu {
