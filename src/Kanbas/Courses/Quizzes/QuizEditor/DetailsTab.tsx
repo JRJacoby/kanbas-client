@@ -64,6 +64,11 @@ function DetailsTab() {
 						</select>
 					</div>
 
+					<div>
+						<label className="form-label" htmlFor="points">Points (readonly: edit questions to update quiz total)</label>
+						<input className="form-control" id="points" type="number" value={quiz.points} />
+					</div>
+
 					<div className="form-group">
 						<label className="form-label" htmlFor="assignment-group">Assignment Group</label>
 						<select className="form-select" id="assignment-group" value={quiz.assignmentGroup} onChange={(e) => setQuizDetails({...quiz, assignmentGroup: e.target.value})}>

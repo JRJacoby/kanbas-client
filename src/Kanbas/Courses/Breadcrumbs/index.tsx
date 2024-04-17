@@ -6,7 +6,6 @@ import { Course } from '../client';
 import * as client from "../client"
 import { Link } from 'react-router-dom';
 
-// TODO: For long IDs like the auto-generated dates for the new courses, the breadcrumb just collapses to '..'. See if there's a way to avoid this.
 function Breadcrumbs() {
     const { pathname } = useLocation();
 	const [course, setCourse] = useState<Course>(null)

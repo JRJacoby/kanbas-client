@@ -85,6 +85,7 @@ export const QuizProvider = ({ children }) => {
 
 	const save = async (publish = false) => {
 		let questionIds = [];
+		let totalPoints = 0;
 		let localQuiz = {...quiz};
 
 		if (publish) {
@@ -95,6 +96,8 @@ export const QuizProvider = ({ children }) => {
 			if (question._id) {
 				await client.updateQuestion(localQuiz._id, question._id, question);
 				questionIds.push(question._id);
+				totalPoints += question.points;
+				console.log(`points in updating questions : ${totalPoints}`)
 			}
 		}
 
@@ -104,10 +107,13 @@ export const QuizProvider = ({ children }) => {
 			const newQuestion = newQuiz.questions.find(q => q.questionNum === questionNum);
 
 			questionIds.push(newQuestion._id);
+			totalPoints += newQuestion.points;
+			console.log(`points in creating questions : ${totalPoints}`)
 		}
 		setNewQuestions([]);
 
-		await client.updateQuiz({...localQuiz, questions: questionIds});
+		console.log(`points in save at end : ${totalPoints}`)
+		await client.updateQuiz({...localQuiz, questions: questionIds, points: totalPoints});
 	}
 
 	const cancel = () => {

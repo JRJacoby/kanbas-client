@@ -17,7 +17,7 @@ export const defaultQuiz = {
 	description: "New Quiz Description",
 	course: "dummyCourseId",
 	quizType: "Graded Quiz",
-	points: 100,
+	points: 0,
 	assignmentGroup: "Quizzes",
 	shuffleAnswers: true,
 	timeLimit: 20,
