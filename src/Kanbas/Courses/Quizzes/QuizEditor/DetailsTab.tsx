@@ -2,11 +2,15 @@ import * as client from "../client";
 import {useState, useEffect } from "react"
 import {useQuiz} from "./QuizContext"
 import "../../../../index.css"
+import {Editor} from '@tinymce/tinymce-react';
+
+const apikey = process.env.REACT_APP_TINYMCE_API_KEY
 
 function DetailsTab() {
 	const {quiz, setQuizDetails} = useQuiz()
 	const [quizTypes, setQuizTypes] = useState([])
 	const [assignmentGroups, setAssignmentGroups] = useState([])
+	const { description } = quiz
 
 	const fetchQuizTypes = async () => {
 		const fetchedQuizTypes = await client.getQuizTypes()
@@ -33,8 +37,14 @@ function DetailsTab() {
 				</div>
 
 				<div>
-					{/*TODO: Replace with full WYSIWYG editor*/}
-					<textarea className="form-control" value={quiz.description} onChange={(e) => setQuizDetails({...quiz, description: e.target.value})}></textarea>
+					<Editor apiKey={apikey} 
+					onEditorChange={
+						(content, editor) => {
+							setQuizDetails({...quiz, description: content})
+						}
+					
+					}
+					value={quiz.description}/>
 				</div>
 
 				<div>

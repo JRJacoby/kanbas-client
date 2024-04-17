@@ -1,6 +1,5 @@
 import {useParams} from 'react-router-dom';
 import {useEffect, useState} from 'react';
-import {useQuiz} from '../QuizEditor/QuizContext';
 import * as client from '../client';
 import "../../../../index.css"
 import Question from '../QuizEditor/Question'
@@ -12,7 +11,9 @@ function QuizPreview() {
 	const started = Date.now()
 
 	const fetchQuiz = async () => {
+		console.log(`fetchQuiz called with quizId: ${quizId}`);
 		const fetchedQuiz = await client.findQuizById(quizId);
+		console.log(`fetchedQuiz: ${JSON.stringify(fetchedQuiz)}`);
 		setQuiz(fetchedQuiz);
 	}
 

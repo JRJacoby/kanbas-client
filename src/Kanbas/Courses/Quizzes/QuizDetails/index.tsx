@@ -9,7 +9,7 @@ function QuizDetails() {
 	const navigate = useNavigate()
 	const [quiz, setQuiz] = useState<any>(defaultQuiz)
 	const [valuesToDisplay, setValuesToDisplay] = useState<any>([])
-
+	
 	const propertiesToDisplay = [
 	  "Quiz Type",
 	  "Points",
