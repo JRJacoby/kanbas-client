@@ -39,6 +39,11 @@ const COURSES_API = `${API_BASE}/api/courses`
 const QUIZZES_API = `${API_BASE}/api/quizzes`
 
 const localeToUTC = (date, time: string) => {
+
+	if (typeof date !== 'string') {
+		return date
+	}
+
 	const [ year, month, day ] = date.split("-")
 
 	if (time == 'end') {
@@ -101,6 +106,11 @@ export const getAssignmentGroups = async () => {
 
 export const getQuestionTypes = async () => {
 	const response = await axios.get(`${API_BASE}/api/quizQuestionTypes`)
+	return response.data
+}
+
+export const getShowCorrectAnswersOptions = async () => {
+	const response = await axios.get(`${API_BASE}/api/showCorrectAnswersOptions`)
 	return response.data
 }
 

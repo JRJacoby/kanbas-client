@@ -3,7 +3,6 @@ import {useState, useEffect } from "react"
 import {useQuiz} from "./QuizContext"
 import "../../../../index.css"
 import {Editor} from '@tinymce/tinymce-react';
-import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 
 const apikey = process.env.REACT_APP_TINYMCE_API_KEY
@@ -12,7 +11,7 @@ function DetailsTab() {
 	const {quiz, setQuizDetails} = useQuiz()
 	const [quizTypes, setQuizTypes] = useState([])
 	const [assignmentGroups, setAssignmentGroups] = useState([])
-	const { description } = quiz
+	const [showCorrectAnswersOptions, setShowCorrectAnswersOptions] = useState([])
 
 	const fetchQuizTypes = async () => {
 		const fetchedQuizTypes = await client.getQuizTypes()
@@ -24,9 +23,15 @@ function DetailsTab() {
 		setAssignmentGroups(fetchedAssignmentGroups)
 	}
 
+	const fetchShowCorrectAnswersOptions = async () => {
+		const fetchedShowCorrectAnswersOptions = await client.getShowCorrectAnswersOptions()
+		setShowCorrectAnswersOptions(fetchedShowCorrectAnswersOptions)
+	}
+
 	useEffect(() => {
 		fetchQuizTypes()
 		fetchAssignmentGroups()
+		fetchShowCorrectAnswersOptions()
 	}, [])
 	
   return (
@@ -80,6 +85,15 @@ function DetailsTab() {
 				<div className="form-check form-group">
 					<label className="form-check-label" htmlFor="multiple-attempts">Multiple Attempts</label>
 					<input id="multiple-attempts" className="form-check-input" type="checkbox" checked={quiz.multipleAttempts} onChange={(e) => setQuizDetails({...quiz, multipleAttempts: e.target.checked})} />
+				</div>
+
+				<div className="form-group">
+					<label className="form-label" htmlFor="show-correct-answers">Show Correct Answers</label>
+					<select className="form-select" id="show-correct-answers" value={quiz.showCorrectAnswers} onChange={(e) => setQuizDetails({...quiz, showCorrectAnswers: e.target.value})}>
+						{showCorrectAnswersOptions.map((option, index) => {
+							return <option key={index} value={option}>{option}</option>
+						})}
+					</select>
 				</div>
 
 				<div className="form-group">
