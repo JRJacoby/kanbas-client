@@ -1,5 +1,5 @@
 .jj-quizzes-main-screen {
-  margin-left: 50px;
+  margin-left: 65px;
   flex-grow: 1;
   flex-shrink: 1;
   max-width: 900px;
@@ -37,4 +37,9 @@
 .jj-popup-menu {
 	border-radius: 5px;
 	border: 1px solid lightgray;
+}
+
+.jj-red-div {
+	background-color: #ffcccc;
+	border: 1px solid red;
 }

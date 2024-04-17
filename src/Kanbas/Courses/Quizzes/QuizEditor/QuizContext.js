@@ -34,9 +34,7 @@ export const QuizProvider = ({ children }) => {
 	}
 
 	const setQuizDetails = (newQuiz) => {
-		console.log(`in setQuizDetails during saveAndPublih, newQuiz: ${JSON.stringify(newQuiz)}`)
 		let {questions, ...details} = newQuiz;
-		console.log(`in setQuizDetails during saveAndPublih, details: ${JSON.stringify(details)}`)
 		setQuiz({...details, questions: quiz.questions});
 	}
 	

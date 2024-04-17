@@ -1,5 +1,6 @@
 import {useQuiz} from '../QuizContext';
 import "../../../../../index.css"
+import "../../index.css"
 import {useState, useEffect} from 'react';
 import * as client from "../../client"
 import { Editor } from '@tinymce/tinymce-react';
@@ -43,19 +44,23 @@ function MultipleChoiceEdit({ questionNum }) {
 		<div>
 			{currentQuestion &&
 			<div>
-			<div className="d-flex justify-content-between">
-				<div>
-				<input value={currentQuestion.title} onChange={(e) => setCurrentQuestion({...currentQuestion, title: e.target.value})}/>
-				<select value={currentQuestion.questionType} onChange={(e) => changeQuestionType(e.target.value)}>
-					{questionTypes.map((questionType, index) => (
-						<option key={index} value={questionType}>{typeMap[questionType]}</option>
-					))}
-				</select>
+			<form onSubmit={(e) => e.preventDefault()}>
+			<div className="d-flex justify-content-between mb-3 pb-3 jj-thin-bottom-border">
+				<div className="d-flex">
+					<input className="form-control me-3" value={currentQuestion.title} onChange={(e) => setCurrentQuestion({...currentQuestion, title: e.target.value})}/>
+					<select className="form-select" value={currentQuestion.questionType} onChange={(e) => changeQuestionType(e.target.value)}>
+						{questionTypes.map((questionType, index) => (
+							<option key={index} value={questionType}>{typeMap[questionType]}</option>
+						))}
+					</select>
 				</div>
-				pts: <input type="number" min="0" value={currentQuestion.points} onChange={(e) => setCurrentQuestion({...currentQuestion, points: e.target.value})}/>
+				<div className="d-flex align-items-center">
+					<label className="form-label me-2" htmlFor="points">pts: </label>
+					<input className="form-control" id="points" type="number" min="0" value={currentQuestion.points} onChange={(e) => setCurrentQuestion({...currentQuestion, points: e.target.value})}/>
+				</div>
 			</div>
 
-				<div>
+				<div className="mb-3">
 					<Editor apiKey={apikey} 
 					onEditorChange={
 						(content, editor) => {
@@ -69,15 +74,15 @@ function MultipleChoiceEdit({ questionNum }) {
 				<div>
 					{currentQuestion.choices.map((choice, index) => {
 						return (
-							<div key={index}>
-								<input type="radio" value={choice} name="multipleChoice" checked={currentQuestion.answer === choice} 
+							<div className="d-flex align-items-center" key={index}>
+								<input className="me-1 form-check-input" type="radio" value={choice} name="multipleChoice" checked={currentQuestion.answer === choice} 
 									onChange={(e) => setCurrentQuestion({...currentQuestion, answer: e.target.value})}/> 
-								<input value={choice} onChange={(e) => {
+								<input className="form-control me-3 my-2 w-25" value={choice} onChange={(e) => {
 									let newChoices = [...currentQuestion.choices]
 									newChoices[index] = e.target.value
 									setCurrentQuestion({...currentQuestion, choices: newChoices})
 								}}/>
-								<button onClick={() => {
+								<button className="btn btn-secondary" onClick={() => {
 									let newChoices = [...currentQuestion.choices]
 									newChoices.splice(index, 1)
 									setCurrentQuestion({...currentQuestion, choices: newChoices})
@@ -87,7 +92,7 @@ function MultipleChoiceEdit({ questionNum }) {
 					})}
 				</div>
 				<div>
-					<button onClick={() => {
+					<button className="btn btn-secondary mb-3" onClick={() => {
 						let newChoices = [...currentQuestion.choices]
 						newChoices.push("")
 						setCurrentQuestion({...currentQuestion, choices: newChoices})
@@ -98,6 +103,7 @@ function MultipleChoiceEdit({ questionNum }) {
 					<button className="btn btn-secondary" onClick={cancelEdit}>Cancel</button>
 					<button className="btn btn-danger" onClick={saveEdit}>Update Question</button>
 				</div>
+			</form>
 			</div>
 			}
 		</div>

@@ -11,12 +11,15 @@ function FillInTheBlanksPreview({ questionNum }) {
 				<p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(question.questionText)}}></p>
 			</div>
 			<hr />
-			{question.answers.map((answer, index) => (
-				<div key={index}>
-					<input type="text" />
-					<hr />
-				</div>
-			))}
+			<form>
+				{question.answers.map((answer, index) => (
+					<div className="form-group" key={index}>
+						<label htmlFor={`answer-${index}`}>Answer {index + 1}</label>
+						<input id={`answer-${index}`} className="form-control w-25" type="text" />
+						<hr />
+					</div>
+				))}
+			</form>
 		</div>
 	)
 }

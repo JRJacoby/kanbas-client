@@ -87,11 +87,11 @@ function DetailsTab() {
 					<input id="due-date" type="date" value={quiz.dueDate} onChange={(e) => setQuizDetails({...quiz, dueDate: e.target.value})} />
 				</div>
 				<div className="form-group">
-					<label className="form-label" htmlFor="available-date">Available Date</label>
+					<label className="form-label" htmlFor="available-date">Available Date </label>
 					<input id="available-date" type="date" value={quiz.availableDate} onChange={(e) => setQuizDetails({...quiz, availableDate: e.target.value})} />
 				</div>
 				<div className="form-group">
-					<label className="form-label" htmlFor="until-date">Until Date</label>
+					<label className="form-label" htmlFor="until-date">Until Date </label>
 					<input id="until-date" type="date" value={quiz.untilDate} onChange={(e) => setQuizDetails({...quiz, untilDate: e.target.value})} />
 
 				</div>

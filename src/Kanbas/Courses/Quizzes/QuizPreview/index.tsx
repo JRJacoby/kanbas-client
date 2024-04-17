@@ -2,13 +2,15 @@ import {useParams} from 'react-router-dom';
 import {useEffect, useState} from 'react';
 import * as client from '../client';
 import "../../../../index.css"
+import "../index.css"
 import Question from '../QuizEditor/Question'
+import { FaExclamationCircle } from 'react-icons/fa';
 
 function QuizPreview() {
 	const [quiz, setQuiz] = useState(null);
 	const [questionNum, setQuestionNum] = useState(1);
 	const { quizId } = useParams();
-	const started = Date.now()
+	const started = new Date().toLocaleString();
 
 	const fetchQuiz = async () => {
 		console.log(`fetchQuiz called with quizId: ${quizId}`);
@@ -29,8 +31,9 @@ function QuizPreview() {
 					<h2>{quiz.title}</h2>
 				</div>
 
-				<div>
-					<p>! This is a preview of the published version of the quiz.</p>
+				<div className="d-flex align-items-center my-2 py-2 jj-red-div">
+					<FaExclamationCircle className="text-danger mx-1" />
+					<p className="my-0">This is a preview of the published version of the quiz.</p>
 				</div>
 
 				<div>
@@ -52,8 +55,8 @@ function QuizPreview() {
 				</div>
 
 				<div className="d-flex justify-content-between">
-					<div>{questionNum > 1 && <button className="btn btn-secondary" onClick={() => setQuestionNum(questionNum - 1)}>Previous</button>}</div>
-					<div>{questionNum < quiz.questions.length && <button className="btn btn-secondary" onClick={() => setQuestionNum(questionNum + 1)}>Next</button>}</div>
+					<div>{questionNum > 1 && <button className="btn btn-secondary my-2" onClick={() => setQuestionNum(questionNum - 1)}>Previous</button>}</div>
+					<div>{questionNum < quiz.questions.length && <button className="btn btn-secondary my-2" onClick={() => setQuestionNum(questionNum + 1)}>Next</button>}</div>
 				</div>
 
 				<div className="d-flex justify-content-end">
