@@ -114,9 +114,13 @@ export const QuizProvider = ({ children }) => {
 		setQuiz(null);
 		setNewQuestions([]);
 	}
+
+	const resetNewQuestions = () => {
+		setNewQuestions([]);
+	}
 	
 	return (
-		<QuizContext.Provider value={{quiz, setQuiz, setQuizDetails, addQuestion, deleteQuestion, updateQuestion, setQuestionType, save, cancel}}>
+		<QuizContext.Provider value={{quiz, setQuiz, setQuizDetails, addQuestion, deleteQuestion, updateQuestion, setQuestionType, save, cancel, resetNewQuestions}}>
 			{children}
 		</QuizContext.Provider>
 	)

@@ -8,7 +8,7 @@ import {useQuiz} from "../QuizEditor/QuizContext"
 function QuizDetails() {
 	const { quizId, courseId } = useParams()
 	const navigate = useNavigate()
-	const {quiz, setQuiz} = useQuiz()
+	const {quiz, setQuiz, resetNewQuestions} = useQuiz()
 	const [valuesToDisplay, setValuesToDisplay] = useState<any>([])
 	
 	const propertiesToDisplay = [
@@ -71,6 +71,7 @@ function QuizDetails() {
 		  fetchedQuiz.lockQuestionsAfterAnswering
 		])
 		setQuiz(fetchedQuiz)
+		resetNewQuestions()
 	}
 
 
