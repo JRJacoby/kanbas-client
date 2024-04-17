@@ -43,13 +43,13 @@ function QuizPreview() {
 
 				<hr />
 
-				<div>
-					<div className="d-flex justify-content-between">
-						<p>Question {questionNum}</p>
-						<p>{quiz.questions[questionNum - 1].points} pts</p>
+				<div className="px-5">
+					<div className="d-flex align-items-center justify-content-between jj-grey-div px-3 py-2">
+						<p className="py-0 my-0"><b>Question {questionNum}</b></p>
+						<p className="py-0 my-0">{quiz.questions[questionNum - 1].points} pts</p>
 					</div>
 
-					<div>
+					<div className="jj-lightgrey-border py-3 px-3">
 						<Question questionNum={quiz.questions[questionNum - 1].questionNum} forcePreview={true} />
 					</div>
 				</div>

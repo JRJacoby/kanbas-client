@@ -48,3 +48,12 @@
 	background-color: #ffcccc;
 	border: 1px solid red;
 }
+
+.jj-grey-div {
+	background-color: lightgray;
+	border: 1px solid gray;
+}
+
+.jj-lightgrey-border {
+	border: 1px solid lightgray;
+}
