@@ -1,4 +1,5 @@
 import "../../../../index.css";
+import "../index.css";
 import {FaRocket, FaCheckCircle, FaEllipsisV} from "react-icons/fa";
 import {RiProhibitedLine} from "react-icons/ri";
 import {useNavigate} from "react-router-dom";
@@ -90,11 +91,11 @@ function Quiz({quizId, onDelete}) {
 				</div>
 				{
 					menuOpen &&
-					<div style={{position: "absolute", top: menuPosition.y, left: menuPosition.x - 85, backgroundColor: "white", border: "1px solid black"}}>
-						<ul>
-							<li onClick={(e) => {e.stopPropagation(); closeMenu(); goToDetails()}}>Edit</li>
-							<li onClick={(e) => {e.stopPropagation(); deleteQuiz()}}>Delete</li>
-							<li onClick={(e) => {e.stopPropagation(); togglePublish()}}>{quiz.published ? "Unpublish" : "Publish"}</li>
+					<div className="jj-popup-menu" style={{position: "absolute", top: menuPosition.y, left: menuPosition.x - 75, backgroundColor: "white", border: "1px solid black"}}>
+						<ul className="ms-0 ps-0">
+							<li className="py-2 px-2 jj-thin-bottom-border" onClick={(e) => {e.stopPropagation(); closeMenu(); goToDetails()}}>Edit</li>
+							<li className="py-2 px-2 jj-thin-bottom-border" onClick={(e) => {e.stopPropagation(); deleteQuiz()}}>Delete</li>
+							<li className="py-2 px-2" onClick={(e) => {e.stopPropagation(); togglePublish()}}>{quiz.published ? "Unpublish" : "Publish"}</li>
 						</ul>
 					</div>
 				}

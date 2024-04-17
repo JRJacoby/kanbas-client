@@ -33,3 +33,8 @@
 .jj-right-justified-list {
 	text-align: right;
 }
+
+.jj-popup-menu {
+	border-radius: 5px;
+	border: 1px solid lightgray;
+}
