@@ -29,7 +29,7 @@ function QuizGroup({assignmentGroup}) {
 			<div>
 				<div className="d-flex justify-content-start align-items-center py-2 jj-quiz-group-header">
 					<FaCaretDown className="mx-3"/>
-					<h4>{assignmentGroup} Quizzes</h4>
+					<h4 className="my-0 py-0">{assignmentGroup} Quizzes</h4>
 				</div>
 				<div>
 					<ul className="ps-0 ms-0">

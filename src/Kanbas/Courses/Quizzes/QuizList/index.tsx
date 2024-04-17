@@ -41,7 +41,7 @@ function QuizList() {
 
 			{
 				quizzes.length === 0 ? (<h2>Click + Quiz to add a quiz</h2>) : (
-					<ul>
+					<ul className="px-5">
 					{assignmentGroups.map((assignmentGroup, index) => {return <li key={index}><QuizGroup assignmentGroup={assignmentGroup}/> </li>})}
 					</ul>
 				)
