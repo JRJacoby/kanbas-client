@@ -4,6 +4,8 @@ import QuizDetails from "./QuizDetails";
 import QuizEditor from "./QuizEditor";
 import QuizPreview from "./QuizPreview";
 import { QuizProvider } from "./QuizEditor/QuizContext";
+import "../index.css"
+import "./index.css"
 
 const now = new Date()
 const nowDateString = now.toLocaleDateString('en-CA', {
@@ -36,7 +38,7 @@ export const defaultQuiz = {
 function Quizzes() {
 	return (
 		<QuizProvider>
-		<div>
+		<div className="jj-quizzes-main-screen">
 			<Routes>
 				<Route path="/" element={<QuizList />} />
 				<Route path="/:quizId/Details" element={<QuizDetails />} />

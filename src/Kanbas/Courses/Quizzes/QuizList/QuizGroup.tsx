@@ -1,4 +1,5 @@
 import "../../../../index.css"
+import "../index.css"
 import {FaCaretDown} from "react-icons/fa"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router"
@@ -23,15 +24,15 @@ function QuizGroup({assignmentGroup}) {
 	}
 
 	return (
-		<div>
+		<div className="mb-5">
 		{quizzes.length > 0 && 
 			<div>
-				<div className="d-flex justify-content-start">
-					<FaCaretDown />
+				<div className="d-flex justify-content-start align-items-center py-2 jj-quiz-group-header">
+					<FaCaretDown className="mx-3"/>
 					<h4>{assignmentGroup} Quizzes</h4>
 				</div>
 				<div>
-					<ul>
+					<ul className="ps-0 ms-0">
 						{
 							quizzes.map((quiz) => {
 								return (

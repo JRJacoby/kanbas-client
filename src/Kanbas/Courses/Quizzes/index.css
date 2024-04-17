@@ -1,0 +1,31 @@
+.jj-quizzes-main-screen {
+  margin-left: 50px;
+  flex-grow: 1;
+  flex-shrink: 1;
+  max-width: 900px;
+}
+
+.jj-green {
+  color: green;
+}
+
+.jj-red {
+  color: red;
+}
+
+.jj-green-left-border {
+  border-left: 3px solid green;
+}
+
+.jj-thin-bottom-border {
+  border-bottom: 1px solid lightgray;
+}
+
+.jj-thin-right-border {
+  border-right: 1px solid lightgray;
+}
+
+.jj-quiz-group-header {
+	border: 1px solid lightgray;
+	background-color: #f9f9f9;
+}

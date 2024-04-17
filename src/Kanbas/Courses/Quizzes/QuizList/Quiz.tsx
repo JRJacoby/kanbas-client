@@ -76,16 +76,16 @@ function Quiz({quizId, onDelete}) {
 	return (
 		<div>
 			{quiz &&
-			<div onClick={goToDetails} className="d-flex justify-content-between">
-				<div className="d-flex justify-content-start">
-					<FaRocket />
-					<div>
-						<h3>{quiz.title}</h3>
+			<div onClick={goToDetails} className="d-flex justify-content-between align-items-center jj-green-left-border jj-thin-bottom-border jj-thin-right-border">
+				<div className="d-flex justify-content-start align-items-center">
+					<FaRocket className="me-3 ms-3 jj-green"/>
+					<div className="mt-3">
+						<h4>{quiz.title}</h4>
 						<p>{getAvailability()} | Due {quiz.dueDate} | {quiz.points} pts | {quiz.questions.length} Questions</p>
 					</div>
 				</div>
 				<div className="d-flex justify-content-end">
-					{quiz.published ? <FaCheckCircle onClick={(e) => {e.stopPropagation(); togglePublish()}}/> : <RiProhibitedLine onClick={(e) => {e.stopPropagation(); togglePublish()}}/>}
+					{quiz.published ? <FaCheckCircle className="jj-green me-3" onClick={(e) => {e.stopPropagation(); togglePublish()}}/> : <RiProhibitedLine className="jj-red me-3" onClick={(e) => {e.stopPropagation(); togglePublish()}}/>}
 					<FaEllipsisV onClick={(e) => {e.stopPropagation(); openMenu(e)}}/>
 				</div>
 				{

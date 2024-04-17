@@ -1,4 +1,5 @@
 import {useQuiz} from '../QuizContext';
+import DOMPurify from 'dompurify';
 
 function FillInTheBlanksPreview({ questionNum }) {
 	const {quiz} = useQuiz();
@@ -7,7 +8,7 @@ function FillInTheBlanksPreview({ questionNum }) {
 	return (
 		<div>
 			<div>
-				<p>{question.questionText}</p>
+				<p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(question.questionText)}}></p>
 			</div>
 			<hr />
 			{question.answers.map((answer, index) => (

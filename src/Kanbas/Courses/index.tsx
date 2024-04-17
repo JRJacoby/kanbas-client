@@ -13,7 +13,6 @@ import Quizzes from "./Quizzes";
 
 const API_BASE = process.env.REACT_APP_API_BASE_ASIX
 
-// TODO: Should I be replacing these example 'anys' with something more specific?
 function Courses() {
     const { courseId } = useParams();
 	const COURSES_API = `${API_BASE}/api/courses`
@@ -32,7 +31,7 @@ function Courses() {
         <div>
             <Breadcrumbs />
             <hr />
-            <div className="d-flex flex-row">
+            <div className="d-flex justify-content-start">
                 <CourseNavigation />
                 <div className="flex-grow-1">
                     <div>

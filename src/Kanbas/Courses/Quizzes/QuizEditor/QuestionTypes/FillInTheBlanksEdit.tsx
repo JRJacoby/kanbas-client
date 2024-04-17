@@ -2,6 +2,9 @@ import {useQuiz} from '../QuizContext';
 import "../../../../../index.css"
 import {useState, useEffect} from 'react';
 import * as client from "../../client"
+import { Editor } from '@tinymce/tinymce-react';
+
+const apikey = process.env.REACT_APP_TINYMCE_API_KEY
 
 function FillInTheBlanksEdit({ questionNum }) {
 	const {quiz, updateQuestion, setQuestionType} = useQuiz();
@@ -51,7 +54,14 @@ function FillInTheBlanksEdit({ questionNum }) {
 			</div>
 
 			<div>
-				<textarea value={currentQuestion.questionText} onChange={(e) => setCurrentQuestion({...currentQuestion, questionText: e.target.value})}/>
+				<Editor apiKey={apikey} 
+				onEditorChange={
+					(content, editor) => {
+						setCurrentQuestion({...currentQuestion, questionText: content})
+					}
+				
+				}
+				value={currentQuestion.questionText}/>
 			</div>
 
 			<div>
