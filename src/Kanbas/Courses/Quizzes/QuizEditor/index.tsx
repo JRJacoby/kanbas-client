@@ -10,8 +10,7 @@ function QuizEditor() {
 	const navigate = useNavigate()
 	const [activeTab, setActiveTab] = useState("Details")
 	const { courseId, quizId } = useParams()
-	const {quiz, setQuiz, save, cancel, setQuizDetails} = useQuiz()
-	const [shouldSaveAndPublish, setShouldSaveAndPublish] = useState(false)
+	const {quiz, setQuiz, save, cancel, resetQuestionsOpenForEdit} = useQuiz()
 
 	const goToQuizList = async () => {
 		cancel()
@@ -41,6 +40,7 @@ function QuizEditor() {
 
 	useEffect(() => {
 		fetchQuiz()
+		resetQuestionsOpenForEdit()
 	}, [])
 
 	return (

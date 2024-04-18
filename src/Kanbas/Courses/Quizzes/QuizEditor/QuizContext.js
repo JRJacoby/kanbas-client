@@ -108,6 +108,10 @@ export const QuizProvider = ({ children }) => {
 		updateQuestion({...question, mode: 'Preview'});
 	}
 
+	const resetQuestionsOpenForEdit = () => {
+		setQuestionsBeingEdited([]);
+	}
+
 	const save = async (publish = false) => {
 		let questionIds = [];
 		let totalPoints = 0;
@@ -151,7 +155,7 @@ export const QuizProvider = ({ children }) => {
 	}
 	
 	return (
-		<QuizContext.Provider value={{quiz, setQuiz, setQuizDetails, addQuestion, deleteQuestion, updateQuestion, setQuestionType, save, cancel, resetNewQuestions, openQuestionForEditing, restoreOriginalQuestion, closeQuestionForEditing}}>
+		<QuizContext.Provider value={{quiz, setQuiz, setQuizDetails, addQuestion, deleteQuestion, updateQuestion, setQuestionType, save, cancel, resetNewQuestions, openQuestionForEditing, restoreOriginalQuestion, closeQuestionForEditing, resetQuestionsOpenForEdit}}>
 			{children}
 		</QuizContext.Provider>
 	)
