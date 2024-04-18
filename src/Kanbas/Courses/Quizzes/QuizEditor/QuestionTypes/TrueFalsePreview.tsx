@@ -12,9 +12,9 @@ function TrueFalsePreview({ questionNum }) {
 			</div>
 
 			<hr />
-			<input name="ansewr" type="radio" value="true" /> True
+			<input name="answer" type="radio" value="true" /> True
 			<hr />
-			<input name="ansewr" type="radio" value="false" /> False
+			<input name="answer" type="radio" value="false" /> False
 		</div>
 	)
 }

@@ -14,7 +14,7 @@ function MultipleChoicePreview({ questionNum}) {
 			<hr />
 			{question.choices.map((option, index) => (
 				<div key={index}>
-					<input type="radio" value={option} /> {option}
+					<input type="radio" name="answer" value={option} /> {option}
 					<hr />
 				</div>
 			))}
