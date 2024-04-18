@@ -2,7 +2,8 @@ import json
 from pymongo import MongoClient
 from bson import ObjectId
 
-client = MongoClient('mongodb+srv://jrdjacoby:heyAdora!1@for-web-dev.9eiyoxr.mongodb.net/?retryWrites=true&w=majority&appName=for-web-dev')
+client = MongoClient('mongodb+srv://jrdjacoby:heyAdora!1@cluster0.iqkgukq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+# client = MongoClient('mongodb+srv://jrdjacoby:heyAdora!1@for-web-dev.9eiyoxr.mongodb.net/?retryWrites=true&w=majority&appName=for-web-dev')
 # client = MongoClient('localhost', 27017)
 db = client['kanbas']
 
