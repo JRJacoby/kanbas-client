@@ -3,7 +3,6 @@ import {TrueFalsePreview, TrueFalseEdit, MultipleChoicePreview, MultipleChoiceEd
 
 function Question({ questionNum, forcePreview = false }) {
 	const {quiz} = useQuiz();
-	console.log("quiz being used", quiz)
 	const question = quiz.questions.find((question) => question.questionNum === questionNum)
 
 	const typeMap = {

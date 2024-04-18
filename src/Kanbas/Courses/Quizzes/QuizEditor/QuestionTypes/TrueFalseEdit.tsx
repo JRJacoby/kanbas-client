@@ -8,7 +8,7 @@ import { Editor } from '@tinymce/tinymce-react';
 const apikey = process.env.REACT_APP_TINYMCE_API_KEY
 
 function TrueFalseEdit({ questionNum }) {
-	const {quiz, updateQuestion, setQuestionType} = useQuiz();
+	const {quiz, updateQuestion, setQuestionType, openQuestionForEditing, restoreOriginalQuestion, closeQuestionForEditing} = useQuiz();
 	const question = quiz.questions.find((question) => question.questionNum === questionNum)
 	const [currentQuestion, setCurrentQuestion] = useState({...question});
 	const [questionTypes, setQuestionTypes] = useState([])
@@ -20,6 +20,7 @@ function TrueFalseEdit({ questionNum }) {
 
 	useEffect(() => {
 		fetchQuestionTypes()
+		openQuestionForEditing(questionNum)
 	}, [])
 
 	const changeQuestionType = async (questionType) => {
@@ -27,10 +28,11 @@ function TrueFalseEdit({ questionNum }) {
 	}
 
 	const cancelEdit = () => {
-		updateQuestion({...question, mode: 'Preview'})
+		restoreOriginalQuestion(questionNum)
 	}
 
 	const saveEdit = async () => {
+		closeQuestionForEditing(questionNum)
 		updateQuestion({...currentQuestion, mode: 'Preview'})
 	}
 
@@ -73,13 +75,13 @@ function TrueFalseEdit({ questionNum }) {
 
 			<div className="form-check">
 				<label className="form-label">True</label>
-				<input className="form-check-input" type="radio" value="true" name="trueFalse" checked={currentQuestion.answer === "true"} 
+				<input className="form-check-input" type="radio" value="true" name="trueFalse" checked={currentQuestion.answer} 
 					onChange={(e) => setCurrentQuestion({...currentQuestion, answer: e.target.value})}/> 
 			</div>
 
 			<div className="form-check">
 				<label className="form-label">False</label>
-				<input className="form-check-input" type="radio" value="false" name="trueFalse" checked={currentQuestion.answer === "false"} 
+				<input className="form-check-input" type="radio" value="false" name="trueFalse" checked={currentQuestion.answer} 
 					onChange={(e) => setCurrentQuestion({...currentQuestion, answer: e.target.value})}/> 
 			</div>
 

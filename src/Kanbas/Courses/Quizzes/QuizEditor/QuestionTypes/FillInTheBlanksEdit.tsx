@@ -8,7 +8,7 @@ import { Editor } from '@tinymce/tinymce-react';
 const apikey = process.env.REACT_APP_TINYMCE_API_KEY
 
 function FillInTheBlanksEdit({ questionNum }) {
-	const {quiz, updateQuestion, setQuestionType} = useQuiz();
+	const {quiz, updateQuestion, setQuestionType, openQuestionForEditing, restoreOriginalQuestion, closeQuestionForEditing} = useQuiz();
 	const question = quiz.questions.find((question) => question.questionNum === questionNum)
 	const [currentQuestion, setCurrentQuestion] = useState({...question});
 	const [questionTypes, setQuestionTypes] = useState([])
@@ -20,6 +20,7 @@ function FillInTheBlanksEdit({ questionNum }) {
 
 	useEffect(() => {
 		fetchQuestionTypes()
+		openQuestionForEditing(questionNum)
 	}, [])
 
 	const changeQuestionType = async (questionType) => {
@@ -27,10 +28,11 @@ function FillInTheBlanksEdit({ questionNum }) {
 	}
 
 	const cancelEdit = () => {
-		updateQuestion({...question, mode: 'Preview'})
+		restoreOriginalQuestion(questionNum)
 	}
 
 	const saveEdit = async () => {
+		closeQuestionForEditing(questionNum)
 		updateQuestion({...currentQuestion, mode: 'Preview'})
 	}
 

@@ -11,9 +11,9 @@ function QuestionsTab() {
 	<div>
 		<div className="px-5">
 			{quiz.questions.map((question: any) => {return question.mode == 'Preview' ?
-				(<div className="mb-5"><Question key={question.questionNum} questionNum={question.questionNum} />
+				(<div key={question.questionNum} className="mb-5"><Question key={question.questionNum} questionNum={question.questionNum} />
 				<button className="btn btn-secondary" onClick={() => updateQuestion({...question, mode: 'Edit'})}>Edit</button></div>) :
-				(<div className="mb-5"><Question key={question.questionNum} questionNum={question.questionNum} /></div>)
+				(<div key={question.questionNum} className="mb-5"><Question key={question.questionNum} questionNum={question.questionNum} /></div>)
 			})}
 		</div>
 

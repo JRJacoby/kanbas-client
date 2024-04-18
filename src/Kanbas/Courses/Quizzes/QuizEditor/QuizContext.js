@@ -7,6 +7,7 @@ export const QuizProvider = ({ children }) => {
 	const [quiz, setQuiz] = useState(null);
 	const [newQuestions, setNewQuestions] = useState([]);
 	const [deletedQuestions, setDeletedQuestions] = useState([]);
+	const [questionsBeingEdited, setQuestionsBeingEdited] = useState([]);
 
 	const defaultQuestion = {
 		title: "New Question Title",
@@ -83,6 +84,30 @@ export const QuizProvider = ({ children }) => {
 		updateQuestion(question);
 	}
 
+	const openQuestionForEditing = (questionNum) => {
+		const question = quiz.questions.find(q => q.questionNum === questionNum);
+		
+		if (questionsBeingEdited.find(q => q.questionNum === questionNum)) {
+			return;
+		}
+
+		console.log(`Found question being edited in openQuestionForEditing: ${JSON.stringify(question)}`)
+		setQuestionsBeingEdited([...questionsBeingEdited, {...question}]);
+	}
+
+	const closeQuestionForEditing = (questionNum) => {
+		console.log(`Closing question for editing: ${questionNum}`)
+		setQuestionsBeingEdited(questionsBeingEdited.filter(q => q.questionNum !== questionNum));
+	}
+
+	const restoreOriginalQuestion = (questionNum) => {
+		const question = questionsBeingEdited.find(q => q.questionNum === questionNum);
+		console.log(`restoring in restoreOriginalQuestion: ${JSON.stringify(question)}`)
+		console.log(`question in quiz currently: ${JSON.stringify(quiz.questions.find(q => q.questionNum === questionNum))}`)
+		setQuestionsBeingEdited(questionsBeingEdited.filter(q => q.questionNum !== questionNum));
+		updateQuestion({...question, mode: 'Preview'});
+	}
+
 	const save = async (publish = false) => {
 		let questionIds = [];
 		let totalPoints = 0;
@@ -126,7 +151,7 @@ export const QuizProvider = ({ children }) => {
 	}
 	
 	return (
-		<QuizContext.Provider value={{quiz, setQuiz, setQuizDetails, addQuestion, deleteQuestion, updateQuestion, setQuestionType, save, cancel, resetNewQuestions}}>
+		<QuizContext.Provider value={{quiz, setQuiz, setQuizDetails, addQuestion, deleteQuestion, updateQuestion, setQuestionType, save, cancel, resetNewQuestions, openQuestionForEditing, restoreOriginalQuestion, closeQuestionForEditing}}>
 			{children}
 		</QuizContext.Provider>
 	)
