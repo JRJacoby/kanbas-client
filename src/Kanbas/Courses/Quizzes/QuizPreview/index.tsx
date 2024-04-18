@@ -5,17 +5,16 @@ import "../../../../index.css"
 import "../index.css"
 import Question from '../QuizEditor/Question'
 import { FaExclamationCircle } from 'react-icons/fa';
+import { useQuiz } from '../QuizEditor/QuizContext';
 
 function QuizPreview() {
-	const [quiz, setQuiz] = useState(null);
+	const {quiz, setQuiz} = useQuiz();
 	const [questionNum, setQuestionNum] = useState(1);
 	const { quizId } = useParams();
 	const started = new Date().toLocaleString();
 
 	const fetchQuiz = async () => {
-		console.log(`fetchQuiz called with quizId: ${quizId}`);
 		const fetchedQuiz = await client.findQuizById(quizId);
-		console.log(`fetchedQuiz: ${JSON.stringify(fetchedQuiz)}`);
 		setQuiz(fetchedQuiz);
 	}
 

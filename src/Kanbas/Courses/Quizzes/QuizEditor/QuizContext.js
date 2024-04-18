@@ -91,19 +91,15 @@ export const QuizProvider = ({ children }) => {
 			return;
 		}
 
-		console.log(`Found question being edited in openQuestionForEditing: ${JSON.stringify(question)}`)
 		setQuestionsBeingEdited([...questionsBeingEdited, {...question}]);
 	}
 
 	const closeQuestionForEditing = (questionNum) => {
-		console.log(`Closing question for editing: ${questionNum}`)
 		setQuestionsBeingEdited(questionsBeingEdited.filter(q => q.questionNum !== questionNum));
 	}
 
 	const restoreOriginalQuestion = (questionNum) => {
 		const question = questionsBeingEdited.find(q => q.questionNum === questionNum);
-		console.log(`restoring in restoreOriginalQuestion: ${JSON.stringify(question)}`)
-		console.log(`question in quiz currently: ${JSON.stringify(quiz.questions.find(q => q.questionNum === questionNum))}`)
 		setQuestionsBeingEdited(questionsBeingEdited.filter(q => q.questionNum !== questionNum));
 		updateQuestion({...question, mode: 'Preview'});
 	}
@@ -126,7 +122,6 @@ export const QuizProvider = ({ children }) => {
 				await client.updateQuestion(localQuiz._id, question._id, question);
 				questionIds.push(question._id);
 				totalPoints += question.points;
-				console.log(`points in updating questions : ${totalPoints}`)
 			}
 		}
 
@@ -137,11 +132,9 @@ export const QuizProvider = ({ children }) => {
 
 			questionIds.push(newQuestion._id);
 			totalPoints += newQuestion.points;
-			console.log(`points in creating questions : ${totalPoints}`)
 		}
 		setNewQuestions([]);
 
-		console.log(`points in save at end : ${totalPoints}`)
 		await client.updateQuiz({...localQuiz, questions: questionIds, points: totalPoints});
 	}
 

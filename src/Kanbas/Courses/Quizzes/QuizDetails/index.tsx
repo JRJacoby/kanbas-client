@@ -39,7 +39,6 @@ function QuizDetails() {
 	}
 
 	const goToPreview = () => {
-		console.log(`going to preview with quizId: ${quizId}`)
 		navigate(`/Kanbas/Courses/${courseId}/Quizzes/${quizId}/Preview`)
 	}
 

@@ -23,7 +23,6 @@ function QuizEditor() {
 	}
 
 	const saveAndPublish = async () => {
-		console.log(`save and publish clicked. quiz: ${JSON.stringify(quiz)}`)
 		await save(true)
 		navigate(`/Kanbas/Courses/${courseId}/Quizzes`)
 	}
